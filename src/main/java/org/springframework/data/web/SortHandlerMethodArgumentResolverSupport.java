@@ -152,7 +152,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 *
 	 * @param sortDefault
 	 * @param sortOrNull
-	 * @return
+	 * @return A {@link Sort} instance reflecting the appended or default sorting configuration.
 	 */
 	private Sort appendOrCreateSortTo(MergedAnnotation<SortDefault> sortDefault, Sort sortOrNull) {
 
@@ -176,7 +176,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 * Returns the sort parameter to be looked up from the request. Potentially applies qualifiers to it.
 	 *
 	 * @param parameter can be {@literal null}.
-	 * @return
+	 * @return The sort parameter from the request, considering applied qualifiers.
 	 */
 	protected String getSortParameter(@Nullable MethodParameter parameter) {
 
@@ -201,7 +201,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 *
 	 * @param source will never be {@literal null}.
 	 * @param delimiter the delimiter to be used to split up the source elements, will never be {@literal null}.
-	 * @return
+	 * @return A {@link Sort} instance reflecting the parsed sort expressions.
 	 */
 	Sort parseParameterIntoSort(List<String> source, String delimiter) {
 
@@ -227,7 +227,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 * of the same direction into a single expression if they are in order.
 	 *
 	 * @param sort must not be {@literal null}.
-	 * @return
+	 * @return A {@link List} of sort expressions reflecting the folded {@link Sort} instance.
 	 */
 	protected List<String> foldIntoExpressions(Sort sort) {
 
@@ -257,7 +257,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 *
 	 * @throws IllegalArgumentException if a {@link Sort} with multiple {@link Direction}s has been handed in.
 	 * @param sort must not be {@literal null}.
-	 * @return
+	 * @return A {@link List} containing two expressions: the property list and the direction.
 	 */
 	protected List<String> legacyFoldExpressions(Sort sort) {
 
@@ -285,7 +285,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 * Returns whether the given source {@link String} consists of dots only.
 	 *
 	 * @param source must not be {@literal null}.
-	 * @return
+	 * @return {@literal true} if the source contains characters other than dots, {@literal false} otherwise.
 	 */
 	static boolean notOnlyDots(String source) {
 		return StringUtils.hasText(source.replace(".", ""));
@@ -316,7 +316,8 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 		 * Returns whether the given {@link Order} has the same direction as the current {@link ExpressionBuilder}.
 		 *
 		 * @param order must not be {@literal null}.
-		 * @return
+		 * @return {@literal true} if the provided order has the same direction as the current {@link ExpressionBuilder},
+		 * {@literal false} otherwise.
 		 */
 		boolean hasSameDirectionAs(Order order) {
 			return this.direction == order.getDirection();

@@ -64,7 +64,7 @@ abstract class SpringDataAnnotationUtils {
 	 * Returns whether the given {@link Method} has more than one {@link Pageable} parameter.
 	 *
 	 * @param method must not be {@literal null}.
-	 * @return
+	 * @return {@literal true} if more than one {@link Pageable} parameter is found, {@literal false} otherwise.
 	 */
 	private static boolean containsMoreThanOnePageableParameter(Method method) {
 
@@ -167,7 +167,7 @@ abstract class SpringDataAnnotationUtils {
 	 * array does not contain a {@link Qualifier} annotation.
 	 *
 	 * @param annotations must not be {@literal null}.
-	 * @return
+	 * @return The found {@link Qualifier} annotation or {@literal null} if not present.
 	 */
 	@Nullable
 	private static Qualifier findAnnotation(Annotation[] annotations) {
